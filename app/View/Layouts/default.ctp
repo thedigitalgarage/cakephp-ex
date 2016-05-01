@@ -42,8 +42,9 @@ section{
   display: block;
 }
 body {
-  color: #404040;
-  font-family: "Helvetica Neue",Helvetica,"Liberation Sans",Arial,sans-serif;
+  background-color: #ffffffff;
+  color: #212121;
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.4;
 }
