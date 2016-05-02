@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Welcome to OpenShift</title>
+  <title>Welcome to The Digital Garage</title>
 
 
 <style>
@@ -42,55 +42,62 @@ section{
   display: block;
 }
 body {
-  background-color: #ffffffff;
+  background-color: #ffffff;
+  background-image: none;
   color: #212121;
   font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
-  line-height: 1.4;
+  font-weight: 400;
+  line-height: 20px;
+  margin: 0;
+  padding: 0;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: subpixel-antialiased;
 }
 
 html {
   font-family: sans-serif;
-  -ms-text-size-adjust: 100%;
+  font-size: 100%;
+  min-height: 100%;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
   -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
 }
+
 ul {
-    margin-top: 0;
+  margin: 12px 0;
+  padding: 0 0 0 32px;
 }
+
 .container {
   margin-right: auto;
   margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-right: 16px;
+  padding-left: 16px;
 }
-.container:before,
-.container:after {
-  content: " ";
-  /* 1 */
-
+.container:after, .container:before {
+  content: "";
   display: table;
-  /* 2 */
-
+  line-height: 0;
 }
 .container:after {
   clear: both;
 }
+
 .row {
-  margin-left: -15px;
-  margin-right: -15px;
+  margin-right: -16px;
+  margin-left: -16px;
 }
-.row:before,
-.row:after {
-  content: " ";
-  /* 1 */
-
+.row:after, .row:before {
+  content: "";
   display: table;
-  /* 2 */
-
+  line-height: 0;
 }
 .row:after {
   clear: both;
 }
+
 .col-sm-6, .col-md-6, .col-xs-12 {
   position: relative;
   min-height: 1px;
@@ -172,9 +179,9 @@ h3 {
   margin: 0 0 .3em;
 }
 p {
-  margin: 0 0 2em;
-  text-align: justify;
+  margin: 12px 0;
 }
+
 p + h2 {
   margin-top: 2em;
 }
@@ -183,25 +190,27 @@ html {
   height: 100%;
 }
 code {
-  background-color: white;
-  border: 1px solid #ccc;
-  padding: 1px 5px;
-  color: #888;
+  background-color: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  color: #ff4081;
+  font-size: 75%;
+  line-height: 1;
+  padding: 2px 4px;
 }
+
 pre {
+  background-color: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 2px;
+  color: rgba(0, 0, 0, 0.87);
   display: block;
-  padding: 13.333px 20px;
-  margin: 0 0 20px;
-  font-size: 13px;
-  line-height: 1.4;
-  background-color: #fff;
-  border-left: 2px solid rgba(120,120,120,0.35);
-  white-space: pre;
-  white-space: pre-wrap;
-  word-break: normal;
+  font-size: 12px;
+  line-height: 20px;
+  margin: 24px 0;
+  padding: 12px 8px;
+  word-break: break-all;
   word-wrap: break-word;
-  overflow: auto;
-  font-family: Menlo,Monaco,"Liberation Mono",Consolas,monospace !important;
 }
 
 </style>
@@ -211,7 +220,7 @@ pre {
 
 <section class='container'>
           <hgroup>
-            <h1>Welcome to your CakePHP application on OpenShift</h1>
+            <h1>Welcome to your CakePHP application on The Digital Garage</h1>
           </hgroup>
 
 
@@ -219,12 +228,12 @@ pre {
           <section class='col-xs-12 col-sm-6 col-md-6'>
             <section>
               <h2>How to use this example application</h2>
-                <p>For instructions on how to use this application with OpenShift, start by reading the <a href="http://docs.openshift.org/latest/dev_guide/templates.html#using-the-quickstart-templates">Developer Guide</a>.</p>
+                <p>For instructions on how to use this application with The Digital Garage, start by reading the <a href="http://docs.openshift.org/latest/dev_guide/templates.html#using-the-quickstart-templates">Developer Guide</a>.</p>
 
               <h2>Deploying code changes</h2>
                 <p>
-                  The source code for this application is available to be forked from the <a href="https://www.github.com/openshift/cakephp-ex">OpenShift GitHub repository</a>.
-                  You can configure a webhook in your repository to make OpenShift automatically start a build whenever you push your code:
+                  The source code for this application is available to be forked from the <a href="https://www.github.com/openshift/cakephp-ex">The Digital Garage GitHub repository</a>.
+                  You can configure a webhook in your repository to make The Digital Garage automatically start a build whenever you push your code:
                 </p>
 
 <ol>
@@ -232,18 +241,18 @@ pre {
   <li>Click on Browse &gt; Builds</li>
   <li>From the view for your Build click on the button to copy your GitHub webhook</li>
   <li>Navigate to your repository on GitHub and click on repository settings &gt; webhooks</li>
-  <li>Paste your webhook URL provided by OpenShift &mdash; that's it!</li>
+  <li>Paste your webhook URL provided by The Digital Garage &mdash; that's it!</li>
 </ol>
-<p>After you save your webhook, if you refresh your settings page you can see the status of the ping that Github sent to OpenShift to verify it can reach the server.</p>
-<p>Note: adding a webhook requires your OpenShift server to be reachable from GitHub.</p>
+<p>After you save your webhook, if you refresh your settings page you can see the status of the ping that Github sent to The Digital Garage to verify it can reach the server.</p>
+<p>Note: adding a webhook requires your The Digital Garage server to be reachable from GitHub.</p>
 
                 <h3>Working in your local Git repository</h3>
-                <p>If you forked the application from the OpenShift GitHub example, you'll need to manually clone the repository to your local system. Copy the application's source code Git URL and then run:</p>
+                <p>If you forked the application from the The Digital Garage GitHub example, you'll need to manually clone the repository to your local system. Copy the application's source code Git URL and then run:</p>
 
 <pre>$ git clone &lt;git_url&gt; &lt;directory_to_create&gt;
 
 # Within your project directory
-# Commit your changes and push to OpenShift
+# Commit your changes and push to The Digital Garage
 
 $ git commit -a -m 'Some commit message'
 $ git push</pre>
@@ -296,15 +305,15 @@ oc deploy cakephp-mysql-example --latest
                 <p>You can use the Web Console to view the state of your application components and launch new builds.</p>
 
                 <h3>Command Line</h3>
-                <p>With the <a href="http://docs.openshift.org/latest/cli_reference/overview.html">OpenShift command line interface</a> (CLI), you can create applications and manage projects from a terminal.</p>
+                <p>With the <a href="http://docs.openshift.org/latest/cli_reference/overview.html">The Digital Garage command line interface</a> (CLI), you can create applications and manage projects from a terminal.</p>
 
                 <h2>Development Resources</h2>
                   <ul>
-                    <li><a href="http://docs.openshift.org/latest/welcome/index.html">OpenShift Documentation</a></li>
-                    <li><a href="https://github.com/openshift/origin">Openshift Origin GitHub</a></li>
+                    <li><a href="http://docs.openshift.org/latest/welcome/index.html">The Digital Garage Documentation</a></li>
+                    <li><a href="https://github.com/openshift/origin">The Digital Garage Origin GitHub</a></li>
                     <li><a href="https://github.com/openshift/source-to-image">Source To Image GitHub</a></li>
-                    <li><a href="http://docs.openshift.org/latest/using_images/s2i_images/php.html">Getting Started with PHP on OpenShift</a></li>
-                    <li><a href="http://stackoverflow.com/questions/tagged/openshift">Stack Overflow questions for OpenShift</a></li>
+                    <li><a href="http://docs.openshift.org/latest/using_images/s2i_images/php.html">Getting Started with PHP on The Digital Garage</a></li>
+                    <li><a href="http://stackoverflow.com/questions/tagged/openshift">Stack Overflow questions for The Digital Garage</a></li>
                     <li><a href="http://git-scm.com/documentation">Git documentation</a></li>
                   </ul>
 
