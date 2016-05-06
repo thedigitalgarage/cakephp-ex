@@ -363,7 +363,7 @@
     {
       "name": "NAMESPACE",
       "displayName": "Namespace",
-      "description": "The OpenShift Namespace where the ImageStream resides.",
+      "description": "The workspace where the ImageStream resides.",
       "value": "openshift"
     },
     {
@@ -382,7 +382,7 @@
       "name": "SOURCE_REPOSITORY_URL",
       "displayName": "Git Repository URL",
       "description": "The URL of the repository with your application source code.",
-      "value": "https://github.com/openshift/cakephp-ex.git"
+      "value": "https://github.com/thedigitalgarage/cakephp-ex.git"
     },
     {
       "name": "SOURCE_REPOSITORY_REF",
