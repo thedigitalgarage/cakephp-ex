@@ -7844,7 +7844,7 @@
 
 <section class='container'>
           <hgroup>
-            <h1>Welcome to your CakePHP application on The Digital Garage</h1>
+            <h1>Hello John, Welcome to your CakePHP application on The Digital Garage</h1>
           </hgroup>
 
 
