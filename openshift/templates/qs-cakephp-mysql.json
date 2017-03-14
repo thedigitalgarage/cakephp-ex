@@ -2,7 +2,7 @@
   "kind": "Template",
   "apiVersion": "v1",
   "metadata": {
-    "name": "cakephp-mysql-example",
+    "name": "qs-cakephp-mysql",
     "annotations": {
       "openshift.io/display-name": "CakePHP + MySQL (Ephemeral)",
       "description": "An example CakePHP application with a MySQL database. For more information about using this template, including OpenShift considerations, see https://github.com/openshift/cakephp-ex/blob/master/README.md.\n\nWARNING: Any data stored will be lost upon pod destruction. Only use this template for testing.",
@@ -16,7 +16,7 @@
   },
   "message": "The following service(s) have been created in your project: ${NAME}, ${DATABASE_SERVICE_NAME}.\n\nFor more information about using this template, including OpenShift considerations, see https://github.com/openshift/cake-ex/blob/master/README.md.",
   "labels": {
-    "template": "cakephp-mysql-example"
+    "template": "qs-cakephp-mysql"
   },
   "objects": [
     {
@@ -158,7 +158,7 @@
                 "command": [
                   "./migrate-database.sh"
                 ],
-                "containerName": "cakephp-mysql-example"
+                "containerName": "qs-cakephp-mysql"
               }
             }
           }
@@ -169,7 +169,7 @@
             "imageChangeParams": {
               "automatic": true,
               "containerNames": [
-                "cakephp-mysql-example"
+                "qs-cakephp-mysql"
               ],
               "from": {
                 "kind": "ImageStreamTag",
@@ -195,7 +195,7 @@
           "spec": {
             "containers": [
               {
-                "name": "cakephp-mysql-example",
+                "name": "qs-cakephp-mysql",
                 "image": " ",
                 "ports": [
                   {
@@ -435,7 +435,7 @@
       "displayName": "Name",
       "description": "The name assigned to all of the frontend objects defined in this template.",
       "required": true,
-      "value": "cakephp-mysql-example"
+      "value": "qs-cakephp-mysql"
     },
     {
       "name": "MEMORY_LIMIT",
