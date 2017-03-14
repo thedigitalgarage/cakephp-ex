@@ -455,8 +455,8 @@
       "name": "SOURCE_REPOSITORY_URL",
       "displayName": "Git Repository URL",
       "description": "The URL of the repository with your application source code.",
-      "value": "https://github.com/thedigitalgarage/cakephp-ex.git"
-      "required": true,
+      "value": "https://github.com/thedigitalgarage/cakephp-ex.git",
+      "required": true
     },
     {
       "name": "SOURCE_REPOSITORY_REF",
