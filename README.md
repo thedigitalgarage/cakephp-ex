@@ -15,7 +15,7 @@ These are some special considerations you may need to keep in mind when running 
 Since the quickstarts are shared code, we had to take special consideration to ensure that security related configuration variable values are unique across applications. To accomplish this, we modified some of the configuration files. Namely we changed Security.salt and Security.cipherSeed values in the app/Config/core.php config file. Those values are now generated from the application template as CAKEPHP_SECURITY_SALT and CAKEPHP_SECURITY_CIPHER_SEED. Also the secret token is generated in the template as CAKEPHP_SECRET_TOKEN. From these values the session hashes are generated. Now instead of using the same default values, OpenShift can generate these values using the generate from logic defined within the instant application's template.
 
 ###Installation:
-These steps assume your OpenShift deployment has the default set of ImageStreams defined.  Instructions for installing the default ImageStreams are available [here](http://docs.openshift.org/latest/admin_guide/install/first_steps.html).  If you are defining the set of ImageStreams now, remember to pass in the proper cluster-admin credentials and to create the ImageStreams in the 'openshift' namespace.
+These steps assume your OpenShift deployment has the default set of ImageStreams defined.  Instructions for installing the default ImageStreams are available [here](https://docs.openshift.org/latest/install_config/imagestreams_templates.html#creating-image-streams-for-openshift-images).  If you are defining the set of ImageStreams now, remember to pass in the proper cluster-admin credentials and to create the ImageStreams in the 'openshift' namespace.
 
 1. Fork a copy of [cakephp-ex](https://github.com/openshift/cakephp-ex)
 2. Clone your repository to your development machine and cd to the repository directory
@@ -29,7 +29,7 @@ These steps assume your OpenShift deployment has the default set of ImageStreams
 
 5. Once the build is running, watch your build progress  
 
-		$ oc build-logs cakephp-example-1
+		$ oc logs build/cakephp-example-1
 
 6. Wait for cakephp-example pods to start up (this can take a few minutes):  
 
@@ -70,12 +70,15 @@ Review some of the common tips and suggestions [here](https://github.com/openshi
 ###Adding Webhooks and Making Code Changes
 Since OpenShift V3 does not provide a git repository out of the box, you can configure your github repository to make a webhook call whenever you push your code.
 
-1. From the console navigate to your project  
-2. Click on Browse > Builds  
-3. From the view for your Build click on the link to display your GitHub webhook and copy the url.  
-4. Navigate to your repository on GitHub and click on repository settings > webhooks  
-5. Paste your copied webhook url provided by OpenShift - Thats it!  
-6. After you save your webhook, if you refresh your settings page you can see the status of the ping that Github sent to OpenShift to verify it can reach the server.  
+1. From the Web Console homepage, navigate to your project
+2. Click on Browse > Builds
+3. Click the link with your BuildConfig name
+4. Click the Configuration tab
+5. Click the "Copy to clipboard" icon to the right of the "GitHub webhook URL" field
+6. Navigate to your repository on GitHub and click on repository settings > webhooks > Add webhook
+7. Paste your webhook URL provided by OpenShift
+8. Leave the defaults for the remaining fields - That's it!
+9. After you save your webhook, if you refresh your settings page you can see the status of the ping that Github sent to OpenShift to verify it can reach the server.  
 
 ###Enabling the Database example
 In order to access the example CakePHP home page, which contains application stats including database connectivity, you have to go into the app/View/Layouts/ directory, remove the default.ctp and after that rename default.ctp.default into default.ctp`.
@@ -86,7 +89,7 @@ You will then need to rebuild the application.  This is done via either a `oc st
 
 ### Hot Deploy
 
-In order to immediately pick up changes made in your application source code, you need to run your built image with the `OPCACHE_REVALIDATE_FREQ=0` parameter to the [oc new-app](https://docs.openshift.org/latest/cli_reference/basic_cli_operations.html#basic-cli-operations) command, while performing the [installation steps](https://github.com/openshift/rails-ex#installation) described in this README.
+In order to immediately pick up changes made in your application source code, you need to run your built image with the `OPCACHE_REVALIDATE_FREQ=0` parameter to the [oc new-app](https://docs.openshift.org/latest/cli_reference/basic_cli_operations.html#basic-cli-operations) command, while performing the [installation steps](https://github.com/openshift/cakephp-ex#installation) described in this README.
 
 	$ oc new-app openshift/templates/cakephp-mysql.json -p OPCACHE_REVALIDATE_FREQ=0
 
@@ -97,6 +100,16 @@ To change your source code in the running container you need to [oc rsh](https:/
 	$ oc rsh <POD_ID>
 
 After you [oc rsh](https://docs.openshift.org/latest/cli_reference/basic_cli_operations.html#troubleshooting-and-debugging-cli-operations) into the running container, your current directory is set to `/opt/app-root/src`, where the source code is located.
+
+###Source repository layout
+
+You do not need to change anything in your existing PHP project's repository.
+However, if these files exist they will affect the behavior of the build process:
+
+* **composer.json**
+
+  List of dependencies to be installed with `composer`. The format is documented
+  [here](https://getcomposer.org/doc/04-schema.md).
 
 ###License
 This code is dedicated to the public domain to the maximum extent permitted by applicable law, pursuant to [CC0](http://creativecommons.org/publicdomain/zero/1.0/).
