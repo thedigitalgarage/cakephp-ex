@@ -349,10 +349,6 @@ oc deploy cakephp-mysql-example --latest
 
           </section>
         </div>
-
-        <footer>
-          <div class="logo"><a href="https://www.openshift.com/"></a></div>
-        </footer>
 </section>
 
 
