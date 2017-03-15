@@ -8,11 +8,6 @@
 
     <title>Digital Garage Quickstart CakePHP Application</title>
 
-    <!-- get bootstrap -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-    <!-- get jquery -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
 </head>
 <body>
 
