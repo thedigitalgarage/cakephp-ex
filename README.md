@@ -1,27 +1,26 @@
-CakePHP Sample App on OpenShift
+CakePHP Sample App on Digital Garage
 ===============================
 
-This is a quickstart CakePHP application for OpenShift v3 that you can use as a starting point to develop your own application and deploy it on an [OpenShift](https://github.com/openshift/origin) cluster.
+This is a quickstart CakePHP application for Digital Garage that you can use as a starting point to develop your own application and deploy it on the [Digital Garage](http://www.thedigitalgarage.io) platform.
 
-If you'd like to install it, follow [these directions](https://github.com/openshift/cakephp-ex/blob/master/README.md#installation).  
+If you'd like to install it, follow [these directions](https://github.com/thedigitalgarage/cakephp-ex/blob/master/README.md#installation).  
 
-The steps in this document assume that you have access to an OpenShift deployment that you can deploy applications on.
+The steps in this document assume that you have access to an Digital Garage deployment that you can deploy applications on.
 
-OpenShift Considerations
+Digital Garage Considerations
 ------------------------
-These are some special considerations you may need to keep in mind when running your application on OpenShift.
+These are some special considerations you may need to keep in mind when running your application on Digital Garage.
 
 ###Security
-Since the quickstarts are shared code, we had to take special consideration to ensure that security related configuration variable values are unique across applications. To accomplish this, we modified some of the configuration files. Namely we changed Security.salt and Security.cipherSeed values in the app/Config/core.php config file. Those values are now generated from the application template as CAKEPHP_SECURITY_SALT and CAKEPHP_SECURITY_CIPHER_SEED. Also the secret token is generated in the template as CAKEPHP_SECRET_TOKEN. From these values the session hashes are generated. Now instead of using the same default values, OpenShift can generate these values using the generate from logic defined within the instant application's template.
+Since the quickstarts are shared code, we had to take special consideration to ensure that security related configuration variable values are unique across applications. To accomplish this, we modified some of the configuration files. Namely we changed Security.salt and Security.cipherSeed values in the app/Config/core.php config file. Those values are now generated from the application template as CAKEPHP_SECURITY_SALT and CAKEPHP_SECURITY_CIPHER_SEED. Also the secret token is generated in the template as CAKEPHP_SECRET_TOKEN. From these values the session hashes are generated. Now instead of using the same default values, Digital Garage can generate these values using the generate from logic defined within the instant application's template.
 
 ###Installation:
-These steps assume your OpenShift deployment has the default set of ImageStreams defined.  Instructions for installing the default ImageStreams are available [here](https://docs.openshift.org/latest/install_config/imagestreams_templates.html#creating-image-streams-for-openshift-images).  If you are defining the set of ImageStreams now, remember to pass in the proper cluster-admin credentials and to create the ImageStreams in the 'openshift' namespace.
 
-1. Fork a copy of [cakephp-ex](https://github.com/openshift/cakephp-ex)
+1. Fork a copy of [cakephp-ex](https://github.com/thedigitalgarage/cakephp-ex)
 2. Clone your repository to your development machine and cd to the repository directory
 3. Add a PHP application from the provided template and specify the source url to be your forked repo  
 
-		$ oc new-app openshift/templates/cakephp.json -p SOURCE_REPOSITORY_URL=<your repository location>
+		$ oc new-app openshift/templates/qs-cakephp-mysql.json -p SOURCE_REPOSITORY_URL=<your repository location>
 
 4. Depending on the state of your system, and whether additional items need to be downloaded, it may take around a minute for your build to be started automatically.  If you do not want to wait, run
 
@@ -68,7 +67,7 @@ Review some of the common tips and suggestions [here](https://github.com/openshi
 
 
 ###Adding Webhooks and Making Code Changes
-Since OpenShift V3 does not provide a git repository out of the box, you can configure your github repository to make a webhook call whenever you push your code.
+Since Digital Garage does not provide a git repository out of the box, you can configure your github repository to make a webhook call whenever you push your code.
 
 1. From the Web Console homepage, navigate to your project
 2. Click on Browse > Builds
@@ -76,9 +75,9 @@ Since OpenShift V3 does not provide a git repository out of the box, you can con
 4. Click the Configuration tab
 5. Click the "Copy to clipboard" icon to the right of the "GitHub webhook URL" field
 6. Navigate to your repository on GitHub and click on repository settings > webhooks > Add webhook
-7. Paste your webhook URL provided by OpenShift
+7. Paste your webhook URL provided by Digital Garage
 8. Leave the defaults for the remaining fields - That's it!
-9. After you save your webhook, if you refresh your settings page you can see the status of the ping that Github sent to OpenShift to verify it can reach the server.  
+9. After you save your webhook, if you refresh your settings page you can see the status of the ping that Github sent to Digital Garage to verify it can reach the server.  
 
 ###Enabling the Database example
 In order to access the example CakePHP home page, which contains application stats including database connectivity, you have to go into the app/View/Layouts/ directory, remove the default.ctp and after that rename default.ctp.default into default.ctp`.
@@ -89,17 +88,17 @@ You will then need to rebuild the application.  This is done via either a `oc st
 
 ### Hot Deploy
 
-In order to immediately pick up changes made in your application source code, you need to run your built image with the `OPCACHE_REVALIDATE_FREQ=0` parameter to the [oc new-app](https://docs.openshift.org/latest/cli_reference/basic_cli_operations.html#basic-cli-operations) command, while performing the [installation steps](https://github.com/openshift/cakephp-ex#installation) described in this README.
+In order to immediately pick up changes made in your application source code, you need to run your built image with the `OPCACHE_REVALIDATE_FREQ=0` parameter to the [oc new-app](https://docs.thedigitalgarage.io/cli_reference/basic_cli_operations.html#basic-cli-operations) command, while performing the [installation steps](https://github.com/thedigitalgarage/cakephp-ex#installation) described in this README.
 
-	$ oc new-app openshift/templates/cakephp-mysql.json -p OPCACHE_REVALIDATE_FREQ=0
+	$ oc new-app thedigitalgarage/templates/cakephp-mysql.json -p OPCACHE_REVALIDATE_FREQ=0
 
 Hot deploy works out of the box in the php image used with this example.
 
-To change your source code in the running container you need to [oc rsh](https://docs.openshift.org/latest/cli_reference/basic_cli_operations.html#troubleshooting-and-debugging-cli-operations) into it.
+To change your source code in the running container you need to [oc rsh](https://docs.thedigitalgarage.io/latest/cli_reference/basic_cli_operations.html#troubleshooting-and-debugging-cli-operations) into it.
 
 	$ oc rsh <POD_ID>
 
-After you [oc rsh](https://docs.openshift.org/latest/cli_reference/basic_cli_operations.html#troubleshooting-and-debugging-cli-operations) into the running container, your current directory is set to `/opt/app-root/src`, where the source code is located.
+After you [oc rsh](https://docs.thedigitalgarage.io/latest/cli_reference/basic_cli_operations.html#troubleshooting-and-debugging-cli-operations) into the running container, your current directory is set to `/opt/app-root/src`, where the source code is located.
 
 ###Source repository layout
 
