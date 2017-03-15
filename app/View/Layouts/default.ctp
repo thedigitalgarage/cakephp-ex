@@ -1,13 +1,9 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <!-- META -->
     <meta charset="utf-8">
-    <!-- Optimize mobile viewport -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Digital Garage Quickstart CakePHP Application</title>
-
 </head>
 <body>
 
